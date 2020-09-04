@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 /**
@@ -80,17 +79,14 @@ public class StepVerifierDemo {
             .verify();
     }
 
-    private void fail() {
-        throw new AssertionError("workshop not implemented");
+    @Value
+    @AllArgsConstructor
+    @Builder
+    static
+    class User {
+
+        String username;
+
     }
-
-}
-
-@Value
-@AllArgsConstructor
-@Builder
-class User {
-
-    String username;
 
 }
