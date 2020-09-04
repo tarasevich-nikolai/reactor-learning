@@ -1,8 +1,5 @@
 package tarasevich.nikolai;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Value;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -46,16 +43,4 @@ public class TransformDemo {
         return Mono.just(new User(u.getUsername().toUpperCase(), u.getFirstname().toUpperCase(), u.getLastname().toUpperCase()));
     }
 
-    @Value
-    @AllArgsConstructor
-    @Builder
-    static class User {
-
-        String username;
-
-        String firstname;
-
-        String lastname;
-
-    }
 }

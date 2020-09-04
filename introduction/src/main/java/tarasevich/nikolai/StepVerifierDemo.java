@@ -22,7 +22,7 @@ public class StepVerifierDemo {
 
         stepVerifierDemo.expectFooBarComplete(Flux.just("foo", "bar"));
 //        stepVerifierDemo.expectFooBarError(Flux.just("foo", "bar", new RuntimeException("Exception")));
-        stepVerifierDemo.expectSkylerJesseComplete(Flux.just(new User("swhite"), new User("jpinkman")));
+        stepVerifierDemo.expectSkylerJesseComplete(Flux.just(User.builder().username("swhite").build(), User.builder().username("jpinkman").build()));
         stepVerifierDemo.expect10Elements(Flux.fromIterable(LongStream.rangeClosed(1, 10).boxed().collect(Collectors.toList())));
         stepVerifierDemo.expect3600Elements(() -> Flux.fromIterable(
             LongStream.rangeClosed(1, 3600).boxed().collect(Collectors.toList()))
@@ -77,16 +77,6 @@ public class StepVerifierDemo {
             .expectNextCount(3600)
             .expectComplete()
             .verify();
-    }
-
-    @Value
-    @AllArgsConstructor
-    @Builder
-    static
-    class User {
-
-        String username;
-
     }
 
 }
